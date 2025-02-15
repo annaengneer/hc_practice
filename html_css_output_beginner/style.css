@@ -1,17 +1,13 @@
 /*スマートフォン、PC共通設定*/
-body {
-    padding: 0 4%;
-}
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin: 0 auto;
 }
 
 .header h2 {
     background-color: black;
     color: #fff;
-    margin-left:10px;
 }
 
 
@@ -49,13 +45,13 @@ body {
     margin-top: 200px;
     font-size: 50px;
     
-   
 }
 
 .main .main_title {
-    margin-top: 20px;
+    margin: 20px 0 10px 0;
     display: flex;
     justify-content: center;
+    font-weight: bolder;
 }
 .main .main_text {
     display: flex;
@@ -73,7 +69,7 @@ body {
     text-underline-offset: 16px;
     display: flex;
     justify-content: center;
-    margin-top: 200px;
+    margin-top: 100px;
     font-size: 50px;
 }
 
@@ -102,53 +98,52 @@ body {
 }
 
 /*PCの設定*/
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 600px) {
     .header {
             font-size: 30px;
         }
     .header h2 {
-        margin-left: 30%;
         margin-top: 10px;
     }
     .header ul {
       margin-left: 30%;
     }
     
-    .main_box {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 60px 40px;
-    }
-
-    .main .main_title {
-        font-size: 30px;
-        font-weight: bold;
-        margin-top: 30px;
-
-        }
-
-   .main .main_text {
-        font-size: 20px;
-        width: 140%;
-        margin-left: 18%;
-        margin-bottom: 20%;
+   .main_box {
+       display: grid;
+       grid-template-columns: 80% 20%;
+       object-fit: cover;
    }
 
-    .main_photo {
+   .main .main_title {
+       font-size: 30px;
+       font-weight: bold;
+       margin-top: 30px;
+       margin-right: 74%;
+   }
+
+   .main .main_text {
+       font-size: 30px;
+       width: 100%;
+       margin-bottom: 20%;
+   }
+
+   .main_photo {
        grid-column: 2;
        grid-row: 1 / 3;
-    }
+       object-fit: cover;
+       width: 100%;
+
+            }
+
     .profile_box {
-        display: grid;
-        justify-content: center;
-        grid-template-columns: repeat(3,1fr);
-        grid-template-rows: 50px 60px 1fr;
-        grid-auto-flow: column;
+      display: flex;
+      gap: 0 20px;
     }
+   
 
     .profile .profile_photo {
-        margin-left: 100px;
-        width: 70%;
+        width: 100%;
         }
        
 
