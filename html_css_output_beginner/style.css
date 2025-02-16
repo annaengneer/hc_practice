@@ -33,7 +33,6 @@
     margin: 0 auto;
     display: block;
 
-
 }
 
 
@@ -102,13 +101,19 @@
     .header {
             font-size: 30px;
         }
+
     .header h2 {
         margin-top: 10px;
     }
+
     .header ul {
       margin-left: 30%;
     }
+
+        .header_photo {
+            width: 100%;
     
+        }
    .main_box {
        display: grid;
        grid-template-columns: 80% 20%;
