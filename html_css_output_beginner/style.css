@@ -86,6 +86,7 @@
 .profile .profile_photo {
     margin: 0 auto;
     display: block;
+    width: 100%;
 }
 
 .footer p {
@@ -98,60 +99,62 @@
 
 /*PCの設定*/
 @media screen and (min-width: 600px) {
-    .header {
-            width: 960px;  
-            justify-content: space-around;
-            margin-left: 23%;
+   .header {
+      width: 960px;  
+      margin-inline: auto;
 
     }
 
-        .header h2 {
-            font-size: 30px;
+    .header h2 {
+        font-size: 30px;
     }
 
    .main_box {
        display: grid;
        grid-template-columns: 80% 20%;
        object-fit: cover;
+       width: 960px;
+       margin-inline: auto;
    }
 
    .main .main_title {
-       font-size: 30px;
+       font-size: 25px;
        font-weight: bold;
        margin-top: 30px;
        margin-right: 74%;
    }
 
    .main .main_text {
-       font-size: 30px;
+       font-size: 20px;
        width: 100%;
        margin-bottom: 20%;
    }
 
    .main_photo {
-       grid-column: 2;
-       grid-row: 1 / 3;
-       object-fit: cover;
-       width: 100%;
-
+      grid-column: 2;
+      grid-row: 1 / 3;
+      object-fit: cover;
+      width: 100%;
             }
 
     .profile_box {
       display: flex;
       gap: 0 20px;
+      width: 960px;
+      margin-inline: auto;
     }
    
 
     .profile .profile_photo {
-        width: 100%;
+      width: 100%;
+       
         }
        
 
     .footer p {
-        color: grey;
-        border-bottom: 1px solid gray;
-        margin-top: 20px;
-        margin-top: 200px;
+      color: grey;
+      border-bottom: 1px solid gray;
+      margin-top: 200px;
         }
 
 }
