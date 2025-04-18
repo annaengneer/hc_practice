@@ -10,21 +10,21 @@ class Calendar:
         self.year = year
 
     def get_days(self, year, month):
-        if month in [4, 6, 9, 11]:
-            return 30
-        if month in [1, 3, 5, 7, 8, 10, 12]:
-            return 31
-        if (month == 2) and ((year % 4 == 0 and year % 100 != 0) or year % 400 == 0):
-            return 29
+        if month == 12:
+            next_month = 1
+            next_year = year + 1
         else:
-            return 28
+            next_month = month + 1
+            next_year = year
+        last_date = (datetime.date(next_year, next_month, 1)- datetime.timedelta(days=1)).day
+        return last_date
 
     def get_week(self, year, month):
         return datetime.date(year, month, 1).weekday()
         
 
     def print_calendar(self):
-        num_days = self.get_days(self.year, self.month)
+        last_date = self.get_days(self.year, self.month)
         first_day = self.get_week(self.year, self.month)
 
 
@@ -34,7 +34,7 @@ class Calendar:
 
         print(" " * 3 * first_day, end="")
 
-        for day in range(1, num_days + 1):
+        for day in range(1, last_date + 1):
             print(f"{day:2d} ", end="")
             if (day + first_day) % 7 == 0:
                 print()
