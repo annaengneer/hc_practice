@@ -10,10 +10,16 @@ class Buy:
     
     # ジュースを購入
     def receive(self,name,price):
+        counter = {}
+        for juice in self.vending_machine.get_inventory():
+            counter[juice.name] = counter.get(juice.name, 0) + 1
         # 残高がジュースの値段以上ある and ジュースが一本以上ある
-        if (self.suica.get_balance() >= price) and (self.vending_machine.get_inventory()[self.juice_name]["count"] > 0):
-            # 在庫を1本減らす
-            self.vending_machine.get_inventory()[self.juice_name]["count"] -= 1
+        if (self.suica.get_balance() >= price) and (counter.get(self.juice_name, 0) + 1):
+            for i, juice in enumerate(self.vending_machine.get_inventory()):
+                if juice.name == self.juice_name:
+                    # 在庫を1本減らす
+                    del self.vending_machine.get_inventory()[i]
+                    break
             # 売り上げ金額を増やす
             self.vending_machine._sales += price
             #suicaの残高を減らす

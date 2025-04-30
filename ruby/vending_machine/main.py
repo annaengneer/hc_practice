@@ -13,20 +13,19 @@ def main():
     vending_machine.show_inventory()
     suica.show_depo()
 
-    buyer.receive('ペプシ', 150)
+    buyer.receive("ペプシ", 150)
 
     print("--- 購入後 ---")
     vending_machine.show_inventory()
     suica.show_depo()
 
-    vending_machine2 = Vending_machine()
     print("--- 補充前 ---")
-    vending_machine2.show_inventory()
-    vending_machine2.get_able_drinks()
-    print(vending_machine2.restock("ペプシ", 3))
+    vending_machine.show_inventory()
+    vending_machine.get_able_drinks()
+    print(vending_machine.restock("ペプシ", 3))
 
     print("--- 補充後 ---")
-    vending_machine2.show_inventory()
+    vending_machine.show_inventory()
 
 if __name__ == "__main__":
     main()
