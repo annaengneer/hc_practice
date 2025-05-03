@@ -6,10 +6,17 @@ class Juice:
     
 class Vending_machine:
     def __init__(self):
-        self._inventory=[Juice("ペプシ", 150),Juice("ペプシ", 150),Juice("ペプシ", 150),Juice("ペプシ", 150),Juice("ペプシ", 150),
-        Juice("モンスター", 230),Juice("モンスター", 230),Juice("モンスター", 230),Juice("モンスター", 230),Juice("モンスター", 230),
-        Juice("いろはす", 120),Juice("いろはす", 120),Juice("いろはす", 120),Juice("いろはす", 120),Juice("いろはす", 120)]
+        self._inventory=[]
         self._sales = 0
+        self._initalize_inventory()
+
+    def _initalize_inventory(self):
+        for _ in range(5):
+            self._inventory.append(Juice("ペプシ", 150))
+        for _ in range(5):
+            self._inventory.append(Juice("モンスター", 230))
+        for _ in range(5):
+            self._inventory.append(Juice("いろはす", 120))
 
     def get_inventory(self):
         return self._inventory
