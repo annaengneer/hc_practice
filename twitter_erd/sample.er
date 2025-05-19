@@ -1,0 +1,90 @@
+[users]
+  *id {label: "bigint, not null"}
+  name {label: "varchar, unique, not null"}
+  phone_number{label: "varchar,unique, not null"}
+  introduction{label: "varchar, not null"}
+  place{label: "varchar"}
+  website{label: "varchar"}
+  birthday{label: "datetime, not null"}
+  profile{label: "varchar DEFAULT 'default.png'"}
+  avatar{label: "varchar DEFAULT 'default.png'"}
+  created_at { label: "datetime, not null"}
+  updated_at { label: "datetime, not null"}
+
+[tweets] {bgcolor: "#d0e0d0"}
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  contents {label: "varchar(140), not null"}
+  created_at { label: "datetime, not null"}
+  deleted_at{ label: "datetime"}
+  updated_at { label: "datetime, not null"}
+
+[messages] {bgcolor: "#d0e0d0"}
+  *id {label: "bigint, not null"}
+  reciver_id {label: "bigint, not null, FK(users)"}
+  sender_id {label: "bigint, not null, FK(users)"}
+  contents {label: "text, not null"}
+  is_read {label: "boolean DEFAULT false, not null"}
+  created_at { label: "datetime, not null"}
+  updated_at { label: "datetime, not null"}
+
+
+  [follows]{bgcolor: "#fffacd"}
+  *id {label: "bigint, not null"}
+  follower_id {label: "bigint, not null, FK(users)"}
+  followed_id {label: "bigint, not null, FK(users)"}
+  deleted_at{ label: "datetime"}
+  created_at { label: "datetime, not null"}
+  updated_at { label: "datetime, not null"}
+
+  [bookmarks]{bgcolor: "#afeeee"}
+  *id {label: "bigint, not null"}
+  user_id{label: "bigint, not null, FK(users)"}
+  tweet_id {label: "bigint, not null, FK(tweets)"}
+  deleted_at{ label: "datetime"}
+  created_at { label: "datetime, not null"}
+  updated_at { label: "datetime, not null"}
+
+  [retweets]{bgcolor: "#afeeee"}
+  *id {label: "bigint, not null"}
+  user_id{label: "bigint, not null, FK(users)"}
+  tweets_id {label: "bigint, not null, FK(tweets)"}
+  deleted_at{ label: "datetime"}
+  created_at { label: "datetime, not null"}
+  updated_at { label: "datetime, not null"}
+
+  [likes]{bgcolor: "#afeeee"}
+  *id {label: "bigint, not null"}
+  users_id{label: "bigint, not null, FK(users)"}
+  tweet_id {label: "bigint, not null, FK(tweets)"}
+  deleted_at{ label: "datetime"}
+  created_at { label: "datetime, not null"}
+  updated_at { label: "datetime, not null"}
+
+  
+  [notifications]{bgcolor: "#ffc0cb"}
+  *id {label: "bigint, not null"}
+  recipient_id {label: "bigint, not null, FK(users)"}
+  actor_id {label: "bigint, not null, FK(users)"}
+  action_type {label: "varchar, not null"}
+  reference_id {label: "bigint"}
+  reference_type{label:"varchar"}
+  is_read {label: "boolean DEFAULT false, not null"}
+  created_at { label: "datetime, not null"}
+  updated_at { label: "datetime, not null"}
+
+ 
+
+# Cardinality    Syntax
+# 0 or 1         ?
+# exactly 1      1
+# 0 or more      *
+# 1 or more      +
+`users` +--1 `tweets`
+`tweets` +--1 `likes`
+`tweets` +--1 `bookmarks`
+`tweets` +--1 `retweets`
+`likes` 1--+ `notifications`
+`users` +--1 `follows`　
+`users` +--1 `messages`
+`follows` 1--+ `notifications`
